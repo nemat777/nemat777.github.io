@@ -1,15 +1,15 @@
 body {
   margin: 0;
-  background: #050607;
-  color: #e2e2e2;
+  background: #050607;      /* dark background */
+  color: #e2e2e2;           /* main text */
   font-family: Arial, sans-serif;
 }
 
 /* Header */
 .site-header {
-  background: #0f1113;
+  background: #0f1113;      /* slightly lighter dark */
   padding: 15px 0;
-  border-bottom: 1px solid #1f2023;
+  border-bottom: 1px solid #1f1f1f;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -24,7 +24,7 @@ body {
 }
 
 .logo {
-  color: #66fcf1;
+  color: #dcdcdc;           /* light gray instead of cyan */
   font-size: 24px;
   text-decoration: none;
   font-weight: bold;
@@ -33,47 +33,47 @@ body {
 /* Navigation Links */
 .nav a {
   margin-left: 20px;
-  color: #c5c6c7;        /* unclicked soft gray */
+  color: #c5c6c7;           /* unclicked soft gray */
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .nav a:hover {
-  color: #e2e2e2;        /* hover bright gray */
+  color: #e2e2e2;           /* hover bright gray */
   transform: translateY(-2px);
 }
 
 .nav a:visited {
-  color: #888888;        /* clicked darker gray */
+  color: #888888;           /* visited darker gray */
 }
 
 /* Hero Section */
 .hero {
   padding: 100px 20px;
   text-align: center;
-  background: linear-gradient(135deg, #0b0c10, #1f2833);
+  background: linear-gradient(135deg, #050607, #1a1a1a);  /* subtle gradient */
 }
 
 .hero h1 {
-  color: #66fcf1;
+  color: #dcdcdc;           /* logo/header color, neutral */
   font-size: 48px;
 }
 
 /* Call to Action Button */
 .cta {
   display: inline-block;
-  background: #45a29e;
+  background: #333333;       /* dark button */
   padding: 12px 24px;
-  color: #0b0c10;
+  color: #e2e2e2;            /* text color */
   font-weight: bold;
   border-radius: 8px;
   text-decoration: none;
   margin-top: 20px;
-  transition: 0.3s;
+  transition: background 0.3s, transform 0.3s;
 }
 
 .cta:hover {
-  background: #66fcf1;
+  background: #444444;       /* slightly lighter on hover */
   transform: scale(1.05);
 }
 
@@ -86,7 +86,7 @@ body {
 }
 
 .card {
-  background: #1f2833;
+  background: #1a1a1a;       /* dark minimalist card */
   padding: 20px;
   border-radius: 12px;
   transition: transform 0.3s ease, background 0.3s ease;
@@ -94,7 +94,7 @@ body {
 
 .card:hover {
   transform: translateY(-5px);
-  background: #24303f;
+  background: #2a2a2a;       /* slightly lighter hover */
 }
 
 /* Footer */
@@ -107,16 +107,16 @@ body {
 
 /* Global Links Anywhere in Content */
 a {
-  color: #c5c6c7;       /* unclicked soft gray */
+  color: #c5c6c7;            /* soft gray unclicked */
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #e2e2e2;       /* hover bright gray */
+  color: #e2e2e2;            /* hover bright gray */
   text-decoration: underline;
 }
 
 a:visited {
-  color: #888888;       /* clicked darker gray */
+  color: #888888;            /* clicked darker gray */
 }
