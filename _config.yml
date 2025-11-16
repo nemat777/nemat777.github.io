@@ -1,0 +1,16 @@
+title: "Kian Nematollahi"
+theme: jekyll-theme-slate
+description: "IT Support Portfolio"
+show_downloads: false
+
+navbar:
+  - name: Home
+    link: /
+  - name: Projects
+    link: /projects
+  - name: About
+    link: /about
+  - name: Contact
+    link: /contact
+  - name: Resume
+    link: /resume.pdf
