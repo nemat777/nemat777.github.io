@@ -1,0 +1,97 @@
+
+body {
+  margin: 0;
+  background: #050607;
+  color: #e2e2e2;
+  font-family: Arial, sans-serif;
+}
+
+.site-header {
+  background: #0f1113;
+  padding: 15px 0;
+  border-bottom: 1px solid #1f2023;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.header-inner {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #66fcf1;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav a {
+  margin-left: 20px;
+  color: #c5c6c7;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.nav a:hover {
+  color: #66fcf1;
+  transform: translateY(-2px);
+}
+
+.hero {
+  padding: 100px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #0b0c10, #1f2833);
+}
+
+.hero h1 {
+  color: #66fcf1;
+  font-size: 48px;
+}
+
+.cta {
+  display: inline-block;
+  background: #45a29e;
+  padding: 12px 24px;
+  color: #0b0c10;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  background: #66fcf1;
+  transform: scale(1.05);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 40px 20px;
+}
+
+.card {
+  background: #1f2833;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #24303f;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.7;
+  font-size: 14px;
+}
