@@ -1,0 +1,21 @@
+title: "Kian Nematollahi"
+theme: minima
+description: "IT Support Portfolio"
+
+markdown: kramdown
+
+# Custom CSS
+sass:
+  style: compressed
+
+plugins:
+  - jekyll-seo-tag
+
+minima:
+  skin: dark
+
+header_pages:
+  - index.md
+  - projects.md
+  - about.md
+  - contact.md
