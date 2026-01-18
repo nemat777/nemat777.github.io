@@ -1,0 +1,733 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Name | Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0a192f;
+      --bg-alt: #112240;
+      --accent: #64ffda;
+      --text: #ccd6f6;
+      --muted: #8892b0;
+      --border: #233554;
+      --mono: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+        "Open Sans", "Helvetica Neue", sans-serif;
+      --transition-fast: 0.2s ease;
+      --max-width: 1000px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    a:hover {
+      color: #bfffea;
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .logo {
+      font-family: var(--mono);
+      font-size: 1rem;
+      color: var(--accent);
+    }
+
+    nav a {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      margin-left: 1.25rem;
+      color: var(--muted);
+    }
+
+    nav a span {
+      color: var(--accent);
+      margin-right: 0.25rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .section-title span {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-right: 0.5rem;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      height: 1px;
+      background-color: var(--border);
+      margin-left: 1rem;
+      flex: 1;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+
+    .hero-subtitle {
+      font-family: var(--mono);
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.8rem, 4vw, 2.3rem);
+      color: var(--muted);
+      margin: 0 0 1.5rem;
+    }
+
+    .hero-body {
+      max-width: 550px;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.85rem 1.5rem;
+      border-radius: 4px;
+      border: 1px solid var(--accent);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .hero-cta:hover {
+      background-color: rgba(100, 255, 218, 0.1);
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+    }
+
+    .about-text {
+      color: var(--muted);
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+    }
+
+    .about-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      columns: 2;
+    }
+
+    .about-list li {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+    }
+
+    .about-list li::before {
+      content: "▹";
+      color: var(--accent);
+      margin-right: 0.4rem;
+    }
+
+    .about-photo {
+      justify-self: center;
+      align-self: flex-start;
+    }
+
+    .about-photo-inner {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      border-radius: 4px;
+      background: #233554;
+      border: 2px solid var(--accent);
+      overflow: hidden;
+    }
+
+    .about-photo-inner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(100, 255, 218, 0.15), transparent);
+      mix-blend-mode: screen;
+    }
+
+    .about-photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    /* Experience */
+
+    .experience-layout {
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 2rem;
+    }
+
+    .experience-tabs {
+      border-left: 1px solid var(--border);
+    }
+
+    .experience-tab {
+      position: relative;
+      padding: 0.6rem 1.25rem;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .experience-tab.active {
+      color: var(--accent);
+      background-color: rgba(100, 255, 218, 0.05);
+    }
+
+    .experience-tab.active::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--accent);
+    }
+
+    .experience-panel {
+      color: var(--muted);
+    }
+
+    .experience-role {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .experience-role span {
+      color: var(--accent);
+    }
+
+    .experience-meta {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+      color: var(--muted);
+    }
+
+    .experience-points {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .experience-points li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.9rem;
+    }
+
+    .experience-points li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      top: 0.2rem;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    /* Featured projects */
+
+    .projects-grid {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.5rem;
+    }
+
+    .project-meta {
+      order: 2;
+    }
+
+    .project-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-description {
+      background-color: var(--bg-alt);
+      border-radius: 4px;
+      padding: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-links a {
+      margin-right: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .project-thumb {
+      order: 1;
+      border-radius: 4px;
+      background-color: var(--bg-alt);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-thumb-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+
+    /* Archive */
+
+    .archive-intro {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .archive-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .archive-table th,
+    .archive-table td {
+      padding: 0.6rem 0.5rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .archive-table th {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .archive-table tr:hover td {
+      background-color: rgba(100, 255, 218, 0.02);
+    }
+
+    .archive-title {
+      color: var(--text);
+    }
+
+    .archive-title span {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      margin-left: 0.35rem;
+    }
+
+    /* Contact */
+
+    .contact {
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .contact-kicker {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-body {
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-cta {
+      display: inline-block;
+      padding: 0.9rem 1.6rem;
+      border-radius: 4px;
+      border: 1px solid var(--accent);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .contact-cta:hover {
+      background-color: rgba(100, 255, 218, 0.1);
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      font-size: 0.7rem;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .project-card,
+      .experience-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .project-meta {
+        order: 1;
+      }
+
+      .project-thumb {
+        order: 2;
+        min-height: 160px;
+      }
+
+      main {
+        padding: 1.5rem 1rem 3rem;
+      }
+
+      .hero {
+        padding-top: 4rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="logo">YN</div>
+      <nav>
+        <a href="#about"><span>01.</span>About</a>
+        <a href="#experience"><span>02.</span>Experience</a>
+        <a href="#work"><span>03.</span>Work</a>
+        <a href="#archive"><span>04.</span>Archive</a>
+        <a href="#contact"><span>05.</span>Contact</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-subtitle">Hi, my name is</div>
+      <h1 class="hero-title">Your Name.</h1>
+      <h2 class="hero-tagline">I build things for the web.</h2>
+      <p class="hero-body">
+        I’m a software developer who enjoys designing and building clean, thoughtful interfaces and
+        systems. Right now I’m focused on shipping reliable, human‑friendly products and learning
+        as much as I can along the way.
+      </p>
+      <a class="hero-cta" href="#work">View my work</a>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2 class="section-title"><span>01.</span>About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Hello! I’m Your Name, and I love building digital products that feel fast, intentional,
+            and a little bit obsessive about the details.
+          </p>
+          <p>
+            I’ve worked across the stack, from design systems and front‑end architecture to APIs
+            and data pipelines. I care about maintainable code, meaningful collaboration, and tools
+            that make people’s lives easier.
+          </p>
+          <p>Here are a few technologies I’ve been working with recently:</p>
+          <ul class="about-list">
+            <li>TypeScript</li>
+            <li>React / Next.js</li>
+            <li>Node.js</li>
+            <li>PostgreSQL</li>
+            <li>Tailwind CSS</li>
+            <li>GraphQL / REST</li>
+          </ul>
+        </div>
+        <div class="about-photo">
+          <div class="about-photo-inner">
+            <div class="about-photo-placeholder">
+              your&nbsp;photo<br />goes&nbsp;here
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2 class="section-title"><span>02.</span>Where I’ve Worked</h2>
+      <div class="experience-layout">
+        <div class="experience-tabs">
+          <div class="experience-tab active">Company One</div>
+          <div class="experience-tab">Company Two</div>
+          <div class="experience-tab">Freelance</div>
+        </div>
+        <div class="experience-panel">
+          <h3 class="experience-role">
+            Senior Software Engineer <span>@ Company One</span>
+          </h3>
+          <div class="experience-meta">Jan 2023 – Present · Remote</div>
+          <ul class="experience-points">
+            <li>
+              Led development of a multi‑page web app used by thousands of users to manage their
+              workflows and content.
+            </li>
+            <li>
+              Designed and implemented reusable components and patterns that improved front‑end
+              performance and consistency.
+            </li>
+            <li>
+              Collaborated closely with designers, product managers, and other engineers to ship
+              features on a regular cadence.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured work -->
+    <section id="work">
+      <h2 class="section-title"><span>03.</span>Some Things I’ve Built</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-meta">
+            <div class="project-label">Featured Project</div>
+            <h3 class="project-title">Project One</h3>
+            <div class="project-description">
+              A brief description of what this project is and why it exists. Focus on the outcome
+              and what makes it interesting, not just the tech stack.
+            </div>
+            <div class="project-tags">
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>Tailwind</span>
+              <span>PostgreSQL</span>
+            </div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Live site</a>
+            </div>
+          </div>
+          <div class="project-thumb">
+            <div class="project-thumb-inner">screenshot / mockup</div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <div class="project-label">Featured Project</div>
+            <h3 class="project-title">Project Two</h3>
+            <div class="project-description">
+              Another project that shows off a different part of your skillset. Mention impact,
+              metrics, or specific problems you solved.
+            </div>
+            <div class="project-tags">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>Redis</span>
+            </div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Case study</a>
+            </div>
+          </div>
+          <div class="project-thumb">
+            <div class="project-thumb-inner">screenshot / mockup</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Archive -->
+    <section id="archive">
+      <h2 class="section-title"><span>04.</span>All Projects</h2>
+      <p class="archive-intro">
+        A non‑exhaustive list of things I’ve worked on over the years.
+      </p>
+      <table class="archive-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Project</th>
+            <th>Made at</th>
+            <th>Built with</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025</td>
+            <td class="archive-title">
+              Project Alpha <span>Product</span>
+            </td>
+            <td>Company One</td>
+            <td>Next.js · TypeScript · PostgreSQL</td>
+            <td><a href="#">Site</a></td>
+          </tr>
+          <tr>
+            <td>2024</td>
+            <td class="archive-title">
+              Design System <span>System</span>
+            </td>
+            <td>Company Two</td>
+            <td>React · Storybook · CSS</td>
+            <td><a href="#">Case study</a></td>
+          </tr>
+          <tr>
+            <td>2023</td>
+            <td class="archive-title">
+              Open Source Tool <span>OSS</span>
+            </td>
+            <td>Personal</td>
+            <td>Node.js · CLI · npm</td>
+            <td><a href="#">GitHub</a></td>
+          </tr>
+          <tr>
+            <td>2022</td>
+            <td class="archive-title">
+              Portfolio v2 <span>Personal</span>
+            </td>
+            <td>Personal</td>
+            <td>Next.js · CSS</td>
+            <td><a href="#">Site</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="contact-kicker">05. What’s Next?</div>
+      <h2 class="contact-title">Get In Touch</h2>
+      <p class="contact-body">
+        I’m always open to new opportunities, collaborations, or just talking about interesting
+        problems. Whether you have a question or just want to say hi, my inbox is open.
+      </p>
+      <a class="contact-cta" href="mailto:you@example.com">Say hello</a>
+    </section>
+
+    <footer>
+      <div>Built by Your Name</div>
+    </footer>
+  </main>
+</body>
+</html>
