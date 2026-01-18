@@ -4,7 +4,7 @@ title: Home
 ---
 
 <section class="hero">
-  <h1>IT Support Specialist</h1>
+  <h1>Systems and IT Support Specialist</h1>
   <p>Building polished IT systems, solving real problems, and documenting everything I learn.</p>
   <a href="/projects" class="cta">View Projects</a>
 </section>
