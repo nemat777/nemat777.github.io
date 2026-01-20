@@ -632,24 +632,24 @@
 
     /* Cursor light effect */
 
-    .cursor-light {
+.cursor-light {
   position: fixed;
-  width: 230px;  /* was 200px */
-  height: 230px;
+  width: 520px;              /* very large circle */
+  height: 520px;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
   background: radial-gradient(
     circle,
-    rgba(100, 255, 218, 0.18),  /* softer center */
-    rgba(100, 255, 218, 0.07) 35%,
+    rgba(100, 255, 218, 0.06) 0%,   /* very faint center */
+    rgba(100, 255, 218, 0.03) 30%,  /* gentle falloff */
     rgba(100, 255, 218, 0.0) 70%
   );
   mix-blend-mode: screen;
-  opacity: 0.12;                  /* JS will fade this in */
+  opacity: 0;                        /* JS fades this in */
   transition: opacity 0.25s ease-out;
   z-index: 0;
-  filter: blur(2px);           /* adds a very soft glow */
+  filter: blur(10px);                /* extra soft */
 }
 
 
@@ -658,27 +658,6 @@
         display: none;
       }
     }
-    /* Cursor light effect */
-
-.cursor-light {
-  position: fixed;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(100, 255, 218, 0.35), rgba(100, 255, 218, 0));
-  mix-blend-mode: screen;
-  opacity: 0; /* hidden until mouse moves */
-  transition: opacity 0.2s ease-out;
-  z-index: 0; /* behind your main content (which has z-index: 1) */
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cursor-light {
-    display: none;
-  }
-}
 
   </style>
 </head>
