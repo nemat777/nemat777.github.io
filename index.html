@@ -651,6 +651,28 @@
         display: none;
       }
     }
+    /* Cursor light effect */
+
+.cursor-light {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(100, 255, 218, 0.35), rgba(100, 255, 218, 0));
+  mix-blend-mode: screen;
+  opacity: 0; /* hidden until mouse moves */
+  transition: opacity 0.2s ease-out;
+  z-index: 0; /* behind your main content (which has z-index: 1) */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-light {
+    display: none;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -910,4 +932,139 @@
           </tr>
           <tr>
             <td>2022</td>
-            
+            <td class="archive-title">
+              Portfolio v2 <span>Personal</span>
+            </td>
+            <td>Personal</td>
+            <td>Next.js · CSS</td>
+            <td><a href="#">Site</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Media server -->
+    <section id="media-server">
+      <h2 class="section-title"><span>05.</span>Media Server Status</h2>
+
+      <div class="media-status-card">
+        <div class="media-status-header">
+          <div class="media-status-title">
+            DorinaServer · TrueNAS SCALE ElectricEel&nbsp;24.10.2.4
+          </div>
+          <div class="media-status-chip media-status-chip--degraded">
+            Pool: HDDs · DEGRADED · 1 disk fault‑tolerant
+          </div>
+        </div>
+
+        <div class="media-status-grid">
+          <div class="media-status-item">
+            <div class="media-status-label">HDDs Pool</div>
+            <div class="media-status-value">3.19&nbsp;TiB / 10.68&nbsp;TiB</div>
+            <div class="media-status-sub">Free: 7.49&nbsp;TiB · 4 disks · ZFS</div>
+          </div>
+
+          <div class="media-status-item">
+            <div class="media-status-label">Big HDDs Pool</div>
+            <div class="media-status-value">0% used</div>
+            <div class="media-status-sub">Free: 23.49&nbsp;TiB · 1 disk · ONLINE</div>
+          </div>
+
+          <div class="media-status-item">
+            <div class="media-status-label">System &amp; Network</div>
+            <div class="media-status-value">2&nbsp;days uptime</div>
+            <div class="media-status-sub">
+              AMD Ryzen 5&nbsp;2600 · 15.5&nbsp;GiB RAM · 192.168.1.37
+            </div>
+          </div>
+
+          <div class="media-status-item">
+            <div class="media-status-label">Media Stack</div>
+            <div class="media-status-tags">
+              <span>Plex</span>
+              <span>Jellyfin</span>
+              <span>qBittorrent</span>
+              <span>Sonarr</span>
+              <span>Radarr</span>
+              <span>Lidarr</span>
+              <span>Readarr</span>
+              <span>Prowlarr</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-status-footer">
+          <div class="media-status-note">
+            DorinaServer is my home lab media server. It runs TrueNAS SCALE with a dedicated
+            media pool, Plex/Jellyfin for streaming, and a full Servarr stack for download
+            automation and library organization. The current degraded state is monitored and
+            tolerated without data loss while I plan a drive replacement.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="contact-kicker">06. What’s Next?</div>
+      <h2 class="contact-title">Get In Touch</h2>
+      <p class="contact-body">
+        I’m always open to new opportunities, collaborations, or just talking about interesting
+        problems. Whether you have a question or just want to say hi, my inbox is open.
+      </p>
+      <a class="contact-cta" href="mailto:you@example.com">Say hello</a>
+    </section>
+
+    <footer>
+      <div>Built by Kian Nematollahi</div>
+    </footer>
+  </main>
+    <script>
+    (function () {
+      const light = document.querySelector('.cursor-light');
+      if (!light) return;
+
+      let targetX = window.innerWidth / 2;
+      let targetY = window.innerHeight / 2;
+      let currentX = targetX;
+      let currentY = targetY;
+      const ease = 0.18;
+      let hasMoved = false;
+
+      function onMouseMove(e) {
+        targetX = e.clientX;
+        targetY = e.clientY;
+
+        if (!hasMoved) {
+          hasMoved = true;
+          light.style.opacity = '1';
+        }
+      }
+
+      window.addEventListener('mousemove', onMouseMove);
+
+      function animate() {
+        currentX += (targetX - currentX) * ease;
+        currentY += (targetY - currentY) * ease;
+
+        light.style.left = currentX + 'px';
+        light.style.top = currentY + 'px';
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+
+      // Optional: hide the light when leaving the window
+      window.addEventListener('mouseleave', () => {
+        light.style.opacity = '0';
+        hasMoved = false;
+      });
+
+      window.addEventListener('mouseenter', () => {
+        // will fade in on first mousemove
+      });
+    })();
+  </script>
+</body>
+</html>
