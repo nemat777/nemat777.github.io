@@ -368,7 +368,6 @@
       overflow: hidden;
       min-height: 220px;
 
-      /* center the widget and give it some breathing room */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -378,7 +377,7 @@
     .project-thumb-inner {
       position: relative;
       width: 100%;
-      max-width: 420px; /* tweak 360–460px to taste */
+      max-width: 420px;
       display: flex;
       align-items: stretch;
       justify-content: stretch;
@@ -390,9 +389,9 @@
       background-color: var(--bg-alt);
       border-radius: 6px;
       border: 1px solid var(--border);
-      padding: 1rem;         /* slightly tighter than before */
+      padding: 1rem;
       color: var(--muted);
-      font-size: 0.8rem;     /* slightly smaller text */
+      font-size: 0.8rem;
       width: 100%;
     }
 
@@ -431,7 +430,7 @@
     .media-status-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem 1rem;   /* tighter */
+      gap: 0.75rem 1rem;
       margin-bottom: 0.75rem;
     }
 
@@ -751,8 +750,8 @@
                   <div class="media-status-title">
                     DorinaServer · TrueNAS SCALE ElectricEel&nbsp;24.10.2.4
                   </div>
-                  <div class="media-status-chip media-status-chip--degraded">
-                    Pool: HDDs · DEGRADED · 1 disk fault‑tolerant
+                  <div class="media-status-chip">
+                    Pool: HDDs · HEALTHY · 1 disk fault‑tolerant
                   </div>
                 </div>
 
@@ -767,7 +766,7 @@
                     <div class="media-status-label">System &amp; Network</div>
                     <div class="media-status-value">913&nbsp;days uptime</div>
                     <div class="media-status-sub">
-                      AMD Ryzen 5&nbsp;2600 · 15.5&nbsp;GiB RAM · 192.168.1.37
+                      AMD Ryzen 5&nbsp;2600 · 15.5&nbsp;GiB RAM
                     </div>
                   </div>
 
