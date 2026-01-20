@@ -634,8 +634,8 @@
 
     .cursor-light {
   position: fixed;
-  width: 260px;  /* was 200px */
-  height: 260px;
+  width: 230px;  /* was 200px */
+  height: 230px;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -646,10 +646,10 @@
     rgba(100, 255, 218, 0.0) 70%
   );
   mix-blend-mode: screen;
-  opacity: 0;                  /* JS will fade this in */
+  opacity: 0.12;                  /* JS will fade this in */
   transition: opacity 0.25s ease-out;
   z-index: 0;
-  filter: blur(4px);           /* adds a very soft glow */
+  filter: blur(2px);           /* adds a very soft glow */
 }
 
 
