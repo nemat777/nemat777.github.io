@@ -44,6 +44,8 @@
       transform: translateY(-1px);
     }
 
+    /* Layout: sidebar + content */
+
     main {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -52,39 +54,78 @@
       z-index: 1;
     }
 
-    header {
+    .app-shell {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      column-gap: 3rem;
+      min-height: 100vh;
+    }
+
+    /* Left sidebar */
+
+    .sidebar {
+      position: sticky;
+      top: 2rem;
+      align-self: flex-start;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      flex-direction: column;
+      gap: 1.75rem;
     }
 
-    .logo {
+    .sidebar-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .sidebar-name span {
+      display: block;
       font-family: var(--mono);
-      font-size: 1rem;
+      font-size: 0.85rem;
       color: var(--accent);
+      margin-bottom: 0.35rem;
     }
 
-    nav a {
+    .sidebar-tagline {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 220px;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-top: 0.5rem;
+    }
+
+    .sidebar-nav a {
       font-family: var(--mono);
       font-size: 0.8rem;
-      margin-left: 1.25rem;
       color: var(--muted);
     }
 
-    nav a span {
+    .sidebar-nav a span {
       color: var(--accent);
-      margin-right: 0.25rem;
+      margin-right: 0.4rem;
     }
 
-    nav a:hover {
+    .sidebar-nav a:hover {
       color: var(--accent);
+    }
+
+    /* Right content */
+
+    .app-content {
+      min-width: 0;
     }
 
     section {
-      padding: 4rem 0;
+      padding: 3rem 0;
     }
+
+    /* Section titles */
 
     .section-title {
       display: flex;
@@ -114,8 +155,8 @@
     /* Hero */
 
     .hero {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
     }
 
     .hero-subtitle {
@@ -591,6 +632,32 @@
     /* Responsive */
 
     @media (max-width: 900px) {
+      main {
+        padding: 1.5rem 1rem 3rem;
+      }
+
+      .app-shell {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 2rem;
+      }
+
+      .sidebar {
+        position: static;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .sidebar-tagline {
+        display: none;
+      }
+
+      .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+      }
+
       .about-grid,
       .project-card,
       .experience-layout {
@@ -606,12 +673,8 @@
         min-height: 220px;
       }
 
-      main {
-        padding: 1.5rem 1rem 3rem;
-      }
-
       .hero {
-        padding-top: 4rem;
+        padding-top: 3rem;
       }
 
       .media-status-grid {
@@ -620,16 +683,12 @@
     }
 
     @media (max-width: 600px) {
-      nav {
-        display: none;
-      }
-
       .hero-title {
         font-size: 2.2rem;
       }
     }
 
-    /* Cursor light effect */
+    /* Cursor light */
 
     .cursor-light {
       position: fixed;
@@ -646,7 +705,7 @@
       );
       mix-blend-mode: screen;
       opacity: 0;
-      transition: opacity 0.25s ease-out;
+      transition: opacity 0.25s.ease-out;
       z-index: 0;
       filter: blur(10px);
     }
@@ -656,257 +715,225 @@
         display: none;
       }
     }
-
-    /* ---------- Card layout + scroll transition ---------- */
-
-    .cards-layout {
-      min-height: 100vh;
-    }
-
-    .card-section {
-      position: relative;
-      margin: 3rem 0;
-      min-height: 60vh;
-      display: flex;
-      align-items: center;
-    }
-
-    .card {
-      width: 100%;
-      padding: 2rem 1.75rem;
-      border-radius: 1.25rem;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      box-shadow:
-        0 18px 40px rgba(15, 23, 42, 0.7),
-        0 0 0 1px rgba(15, 23, 42, 0.8);
-      transform-origin: center center;
-      transform: perspective(1200px) rotateX(0deg) translateY(0px) scale(0.96);
-      opacity: 0.7;
-      transition:
-        transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
-        opacity 0.35s ease,
-        box-shadow 0.4s ease,
-        border-color 0.3s ease;
-    }
-
-    .card.is-focused {
-      transform: perspective(1200px) rotateX(0deg) translateY(0px) scale(1);
-      opacity: 1;
-      box-shadow:
-        0 26px 60px rgba(15, 23, 42, 0.9),
-        0 0 0 1px rgba(248, 250, 252, 0.08);
-      border-color: rgba(148, 163, 184, 0.4);
-    }
-
-    .card.hero {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
-    }
   </style>
 </head>
 <body>
   <div class="cursor-light" aria-hidden="true"></div>
 
-  <main class="cards-layout">
-    <header>
-      <div class="logo">KN</div>
-      <nav>
-        <a href="#about"><span>01.</span>About</a>
-        <a href="#experience"><span>02.</span>Experience</a>
-        <a href="#work"><span>03.</span>Work</a>
-        <a href="#archive"><span>04.</span>Archive</a>
-        <a href="#contact"><span>05.</span>Contact</a>
-      </nav>
-    </header>
+  <main>
+    <div class="app-shell">
+      <!-- Left sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-name">
+          <span>KN</span>
+          Kian Nematollahi
+        </div>
+        <div class="sidebar-tagline">
+          I build thoughtful web interfaces and keep the systems behind them happy.
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#top"><span>00.</span>Intro</a>
+          <a href="#about"><span>01.</span>About</a>
+          <a href="#experience"><span>02.</span>Experience</a>
+          <a href="#work"><span>03.</span>Work</a>
+          <a href="#archive"><span>04.</span>Archive</a>
+          <a href="#media-server"><span>05.</span>Media Server</a>
+          <a href="#contact"><span>06.</span>Contact</a>
+        </nav>
+      </aside>
 
-    <!-- Hero -->
-    <section class="card-section" id="top">
-      <div class="card hero">
-        <div class="hero-subtitle">Hi, my name is</div>
-        <h1 class="hero-title">Kian Nematollahi.</h1>
-        <h2 class="hero-tagline">I build things for the web.</h2>
-        <p class="hero-body">
-          I’m a software developer who enjoys designing and building clean, thoughtful interfaces and
-          systems. Right now I’m focused on shipping reliable, human‑friendly products and learning
-          as much as I can along the way.
-        </p>
-        <a class="hero-cta" href="#work">View my work</a>
-      </div>
-    </section>
+      <!-- Right scrollable content -->
+      <div class="app-content">
+        <!-- Hero -->
+        <section class="hero" id="top">
+          <div class="hero-subtitle">Hi, my name is</div>
+          <h1 class="hero-title">Kian Nematollahi.</h1>
+          <h2 class="hero-tagline">I build things for the web.</h2>
+          <p class="hero-body">
+            I’m a software developer who enjoys designing and building clean, thoughtful interfaces and
+            systems. Right now I’m focused on shipping reliable, human‑friendly products and learning
+            as much as I can along the way.
+          </p>
+          <a class="hero-cta" href="#work">View my work</a>
+        </section>
 
-    <!-- About -->
-    <section class="card-section" id="about">
-      <div class="card">
-        <h2 class="section-title"><span>01.</span>About Me</h2>
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-              Hello! I’m Kian, and I love building digital products that feel fast, intentional,
-              and a little bit obsessive about the details.
-            </p>
-            <p>
-              I’ve worked across the stack, from design systems and front‑end architecture to APIs
-              and data pipelines. I care about maintainable code, meaningful collaboration, and tools
-              that make people’s lives easier.
-            </p>
-            <p>Here are a few technologies I’ve been working with recently:</p>
-            <ul class="about-list">
-              <li>TypeScript</li>
-              <li>React / Next.js</li>
-              <li>Node.js</li>
-              <li>PostgreSQL</li>
-              <li>Tailwind CSS</li>
-              <li>GraphQL / REST</li>
-            </ul>
-          </div>
-          <div class="about-photo">
-            <div class="about-photo-inner">
-              <div class="about-photo-placeholder">
-                your&nbsp;photo<br />goes&nbsp;here
+        <!-- About -->
+        <section id="about">
+          <h2 class="section-title"><span>01.</span>About Me</h2>
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                Hello! I’m Kian, and I love building digital products that feel fast, intentional,
+                and a little bit obsessive about the details.
+              </p>
+              <p>
+                I’ve worked across the stack, from design systems and front‑end architecture to APIs
+                and data pipelines. I care about maintainable code, meaningful collaboration, and tools
+                that make people’s lives easier.
+              </p>
+              <p>Here are a few technologies I’ve been working with recently:</p>
+              <ul class="about-list">
+                <li>TypeScript</li>
+                <li>React / Next.js</li>
+                <li>Node.js</li>
+                <li>PostgreSQL</li>
+                <li>Tailwind CSS</li>
+                <li>GraphQL / REST</li>
+              </ul>
+            </div>
+            <div class="about-photo">
+              <div class="about-photo-inner">
+                <div class="about-photo-placeholder">
+                  your&nbsp;photo<br />goes&nbsp;here
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- Experience -->
-    <section class="card-section" id="experience">
-      <div class="card">
-        <h2 class="section-title"><span>02.</span>Where I’ve Worked</h2>
-        <div class="experience-layout">
-          <div class="experience-tabs">
-            <div class="experience-tab active">Company One</div>
-            <div class="experience-tab">Company Two</div>
-            <div class="experience-tab">Freelance</div>
-          </div>
-          <div class="experience-panel">
-            <h3 class="experience-role">
-              Senior Software Engineer <span>@ Company One</span>
-            </h3>
-            <div class="experience-meta">Jan 2023 – Present · Remote</div>
-            <ul class="experience-points">
-              <li>
-                Led development of a multi‑page web app used by thousands of users to manage their
-                workflows and content.
-              </li>
-              <li>
-                Designed and implemented reusable components and patterns that improved front‑end
-                performance and consistency.
-              </li>
-              <li>
-                Collaborated closely with designers, product managers, and other engineers to ship
-                features on a regular cadence.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Featured work -->
-    <section class="card-section" id="work">
-      <div class="card">
-        <h2 class="section-title"><span>03.</span>Some Things I’ve Built</h2>
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-meta">
-              <div class="project-label">Featured Project</div>
-              <h3 class="project-title">DorinaServer · Home Lab Media Server</h3>
-              <div class="project-description">
-                DorinaServer is my home lab media server running TrueNAS SCALE. It manages a
-                dedicated ZFS media pool, Plex/Jellyfin for streaming, and a full Servarr stack
-                (Sonarr/Radarr/Lidarr/Readarr/qBittorrent/Prowlarr) for automated downloads and
-                library organization. This widget surfaces storage, system, and library information
-                in a compact, portfolio‑friendly layout. Beyond being a media server, DorinaServer is my playground for learning storage, networking, monitoring, and automation — the same skills that show up when debugging production systems or supporting other people’s environments.
-              </div>
-              <div class="project-tags">
-                <span>TrueNAS SCALE</span>
-                <span>ZFS</span>
-                <span>Plex</span>
-                <span>Jellyfin</span>
-                <span>Servarr Stack</span>
-                <span>Home Lab</span>
-              </div>
-              <div class="project-links">
-                <a href="#">Case study</a>
-              </div>
+        <!-- Experience -->
+        <section id="experience">
+          <h2 class="section-title"><span>02.</span>Where I’ve Worked</h2>
+          <div class="experience-layout">
+            <div class="experience-tabs">
+              <div class="experience-tab active">Company One</div>
+              <div class="experience-tab">Company Two</div>
+              <div class="experience-tab">Freelance</div>
             </div>
-            <div class="project-thumb">
-              <div class="project-thumb-inner">
-                <div class="media-status-card">
-                  <div class="media-status-header">
-                    <div class="media-status-title">
-                      DorinaServer · TrueNAS SCALE ElectricEel&nbsp;24.10.2.4
-                    </div>
-                    <div class="media-status-chip media-status-chip--healthy">
-                      Pool: HDDs · HEALTHY · 1 disk fault‑tolerant
-                    </div>
-                  </div>
+            <div class="experience-panel">
+              <h3 class="experience-role">
+                Senior Software Engineer <span>@ Company One</span>
+              </h3>
+              <div class="experience-meta">Jan 2023 – Present · Remote</div>
+              <ul class="experience-points">
+                <li>
+                  Led development of a multi‑page web app used by thousands of users to manage their
+                  workflows and content.
+                </li>
+                <li>
+                  Designed and implemented reusable components and patterns that improved front‑end
+                  performance and consistency.
+                </li>
+                <li>
+                  Collaborated closely with designers, product managers, and other engineers to ship
+                  features on a regular cadence.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-                  <div class="media-status-grid">
-                    <div class="media-status-item">
-                      <div class="media-status-label">HDDs Pool</div>
-                      <div class="media-status-value">3.19&nbsp;TiB / 10.68&nbsp;TiB</div>
-                      <div class="media-status-sub">Free: 7.49&nbsp;TiB · 4 disks · ZFS</div>
-                    </div>
-
-                    <div class="media-status-item">
-                      <div class="media-status-label">System &amp; Network</div>
-                      <div class="media-status-value">913&nbsp;days uptime</div>
-                      <div class="media-status-sub">
-                        AMD Ryzen 5&nbsp;2600 · 15.5&nbsp;GiB RAM
+        <!-- Featured work -->
+        <section id="work">
+          <h2 class="section-title"><span>03.</span>Some Things I’ve Built</h2>
+          <div class="projects-grid">
+            <!-- DorinaServer -->
+            <article class="project-card">
+              <div class="project-meta">
+                <div class="project-label">Featured Project</div>
+                <h3 class="project-title">DorinaServer · Home Lab Media Server</h3>
+                <div class="project-description">
+                  DorinaServer is my home lab media server running TrueNAS SCALE. It manages a
+                  dedicated ZFS media pool, Plex/Jellyfin for streaming, and a full Servarr stack
+                  (Sonarr/Radarr/Lidarr/Readarr/qBittorrent/Prowlarr) for automated downloads and
+                  library organization. This widget surfaces storage, system, and library information
+                  in a compact, portfolio‑friendly layout. Beyond being a media server, DorinaServer is my playground for learning storage, networking, monitoring, and automation — the same skills that show up when debugging production systems or supporting other people’s environments.
+                </div>
+                <div class="project-tags">
+                  <span>TrueNAS SCALE</span>
+                  <span>ZFS</span>
+                  <span>Plex</span>
+                  <span>Jellyfin</span>
+                  <span>Servarr Stack</span>
+                  <span>Home Lab</span>
+                </div>
+                <div class="project-links">
+                  <a href="#">Case study</a>
+                </div>
+              </div>
+              <div class="project-thumb">
+                <div class="project-thumb-inner">
+                  <div class="media-status-card">
+                    <div class="media-status-header">
+                      <div class="media-status-title">
+                        DorinaServer · TrueNAS SCALE ElectricEel&nbsp;24.10.2.4
+                      </div>
+                      <div class="media-status-chip media-status-chip--healthy">
+                        Pool: HDDs · HEALTHY · 1 disk fault‑tolerant
                       </div>
                     </div>
 
-                    <div class="media-status-item">
-                      <div class="media-status-label">Library</div>
-                      <div class="media-status-value">
-                        823&nbsp;movies · 913&nbsp;episodes · 2678&nbsp;songs
+                    <div class="media-status-grid">
+                      <div class="media-status-item">
+                        <div class="media-status-label">HDDs Pool</div>
+                        <div class="media-status-value">3.19&nbsp;TiB / 10.68&nbsp;TiB</div>
+                        <div class="media-status-sub">Free: 7.49&nbsp;TiB · 4 disks · ZFS</div>
                       </div>
-                      <div class="media-status-sub">Tracked across Plex/Jellyfin libraries</div>
+
+                      <div class="media-status-item">
+                        <div class="media-status-label">System &amp; Network</div>
+                        <div class="media-status-value">913&nbsp;days uptime</div>
+                        <div class="media-status-sub">
+                          AMD Ryzen 5&nbsp;2600 · 15.5&nbsp;GiB RAM
+                        </div>
+                      </div>
+
+                      <div class="media-status-item">
+                        <div class="media-status-label">Library</div>
+                        <div class="media-status-value">
+                          823&nbsp;movies · 913&nbsp;episodes · 2678&nbsp;songs
+                        </div>
+                        <div class="media-status-sub">Tracked across Plex/Jellyfin libraries</div>
+                      </div>
+
+                      <div class="media-status-item">
+                        <div class="media-status-label">Media Stack</div>
+                        <div class="media-status-tags">
+                          <span>Plex</span>
+                          <span>Jellyfin</span>
+                          <span>qBittorrent</span>
+                          <span>Sonarr</span>
+                          <span>Radarr</span>
+                          <span>Lidarr</span>
+                          <span>Readarr</span>
+                          <span>Prowlarr</span>
+                        </div>
+                      </div>
                     </div>
 
-                    <div class="media-status-item">
-                      <div class="media-status-label">Media Stack</div>
-                      <div class="media-status-tags">
-                        <span>Plex</span>
-                        <span>Jellyfin</span>
-                        <span>qBittorrent</span>
-                        <span>Sonarr</span>
-                        <span>Radarr</span>
-                        <span>Lidarr</span>
-                        <span>Readarr</span>
-                        <span>Prowlarr</span>
+                    <div class="media-status-footer">
+                      <div class="media-status-note">
+                        This static snapshot mirrors my real home lab: TrueNAS SCALE with ZFS storage,
+                        streaming via Plex/Jellyfin, and automated media workflows powered by the
+                        Servarr stack.
                       </div>
-                    </div>
-                  </div>
-
-                  <div class="media-status-footer">
-                    <div class="media-status-note">
-                      This static snapshot mirrors my real home lab: TrueNAS SCALE with ZFS storage,
-                      streaming via Plex/Jellyfin, and automated media workflows powered by the
-                      Servarr stack.
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="project-card">
-            <div class="project-meta">
-              <div class="project-label">Featured Project</div>
-              <h3 class="project-title">Project Two</h3>
-              <div class="project-description">
-                Another project that shows off a different part of your skillset. Mention impact,
-                metrics, or specific problems you solved.
+            <!-- Project Two placeholder -->
+            <article class="project-card">
+              <div class="project-meta">
+                <div class="project-label">Featured Project</div>
+                <h3 class="project-title">Project Two</h3>
+                <div class="project-description">
+                  Another project that shows off a different part of your skillset. Mention impact,
+                  metrics, or specific problems you solved.
+                </div>
+                <div class="project-tags">
+                  <span>React</span>
+                  <span>Node.js</span>
+                  <span>Redis</span>
+                </div>
+                <div class="project-links">
+                  <a href="#">GitHub</a>
+                  <a href="#">Case study</a>
+                </div>
               </div>
-              <div class="project-tags">
-                <span>React</span>
-                <span>Node.js</span>
-                <span>Redis</span>
+              <div class="project-thumb">
+                <div class="project-thumb-inner">screenshot / mockup</div>
               </div>
-              <div class="project-links">
-                <a href="#">GitHub
+            </article>
+          
