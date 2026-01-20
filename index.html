@@ -633,18 +633,25 @@
     /* Cursor light effect */
 
     .cursor-light {
-      position: fixed;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(100, 255, 218, 0.35), rgba(100, 255, 218, 0));
-      mix-blend-mode: screen;
-      z-index: 0; /* behind main but above bg */
-      opacity: 0;
-      transition: opacity 0.2s ease-out;
-    }
+  position: fixed;
+  width: 260px;  /* was 200px */
+  height: 260px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(100, 255, 218, 0.18),  /* softer center */
+    rgba(100, 255, 218, 0.07) 35%,
+    rgba(100, 255, 218, 0.0) 70%
+  );
+  mix-blend-mode: screen;
+  opacity: 0;                  /* JS will fade this in */
+  transition: opacity 0.25s ease-out;
+  z-index: 0;
+  filter: blur(4px);           /* adds a very soft glow */
+}
+
 
     @media (prefers-reduced-motion: reduce) {
       .cursor-light {
