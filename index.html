@@ -420,66 +420,106 @@
       margin-left: 0.35rem;
     }
 
-    <section id="media-server">
-  <h2 class="section-title"><span>06.</span>Media Server Status</h2>
+    /* Media server section */
 
-  <div class="media-status-card">
-    <div class="media-status-header">
-      <div class="media-status-title">
-        DorinaServer · TrueNAS SCALE ElectricEel&nbsp;24.10.2.4
-      </div>
-      <div class="media-status-chip media-status-chip--degraded">
-        Pool: HDDs · DEGRADED · 1 disk fault‑tolerant
-      </div>
-    </div>
+    .media-status-card {
+      background-color: var(--bg-alt);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
 
-    <div class="media-status-grid">
-      <div class="media-status-item">
-        <div class="media-status-label">HDDs Pool</div>
-        <div class="media-status-value">3.19&nbsp;TiB / 10.68&nbsp;TiB</div>
-        <div class="media-status-sub">Free: 7.49&nbsp;TiB · 4 disks · ZFS</div>
-      </div>
+    .media-status-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
 
-      <div class="media-status-item">
-        <div class="media-status-label">Big HDDs Pool</div>
-        <div class="media-status-value">0% used</div>
-        <div class="media-status-sub">Free: 23.49&nbsp;TiB · 1 disk · ONLINE</div>
-      </div>
+    .media-status-title {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text);
+    }
 
-      <div class="media-status-item">
-        <div class="media-status-label">System &amp; Network</div>
-        <div class="media-status-value">2&nbsp;days uptime</div>
-        <div class="media-status-sub">
-          AMD Ryzen 5&nbsp;2600 · 15.5&nbsp;GiB RAM · 192.168.1.37
-        </div>
-      </div>
+    .media-status-chip {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background-color: rgba(100, 255, 218, 0.05);
+      color: var(--muted);
+      white-space: nowrap;
+    }
 
-      <div class="media-status-item">
-        <div class="media-status-label">Media Stack</div>
-        <div class="media-status-tags">
-          <span>Plex</span>
-          <span>Jellyfin</span>
-          <span>qBittorrent</span>
-          <span>Sonarr</span>
-          <span>Radarr</span>
-          <span>Lidarr</span>
-          <span>Readarr</span>
-          <span>Prowlarr</span>
-        </div>
-      </div>
-    </div>
+    .media-status-chip--degraded {
+      border-color: #f59e0b;
+      color: #fbbf24;
+      background-color: rgba(245, 158, 11, 0.08);
+    }
 
-    <div class="media-status-footer">
-      <div class="media-status-note">
-        DorinaServer is my home lab media server. It runs TrueNAS SCALE with a dedicated
-        media pool, Plex/Jellyfin for streaming, and a full Servarr stack for download
-        automation and library organization. The current degraded state is monitored and
-        tolerated without data loss while I plan a drive replacement.
-      </div>
-    </div>
-  </div>
-</section>
+    .media-status-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
 
+    .media-status-item {
+      min-width: 0;
+    }
+
+    .media-status-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .media-status-value {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.1rem;
+    }
+
+    .media-status-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .media-status-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+
+    .media-status-tags span {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background-color: rgba(15, 23, 42, 0.7);
+    }
+
+    .media-status-footer {
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .media-status-note {
+      line-height: 1.5;
+    }
 
     /* Contact */
 
@@ -560,6 +600,10 @@
       .hero {
         padding-top: 4rem;
       }
+
+      .media-status-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
     @media (max-width: 600px) {
@@ -582,7 +626,8 @@
         <a href="#experience"><span>02.</span>Experience</a>
         <a href="#work"><span>03.</span>Work</a>
         <a href="#archive"><span>04.</span>Archive</a>
-        <a href="#contact"><span>05.</span>Contact</a>
+        <a href="#media-server"><span>05.</span>Media</a>
+        <a href="#contact"><span>06.</span>Contact</a>
       </nav>
     </header>
 
@@ -775,9 +820,70 @@
       </table>
     </section>
 
+    <!-- Media server -->
+    <section id="media-server">
+      <h2 class="section-title"><span>05.</span>Media Server Status</h2>
+
+      <div class="media-status-card">
+        <div class="media-status-header">
+          <div class="media-status-title">
+            DorinaServer · TrueNAS SCALE ElectricEel&nbsp;24.10.2.4
+          </div>
+          <div class="media-status-chip media-status-chip--degraded">
+            Pool: HDDs · DEGRADED · 1 disk fault‑tolerant
+          </div>
+        </div>
+
+        <div class="media-status-grid">
+          <div class="media-status-item">
+            <div class="media-status-label">HDDs Pool</div>
+            <div class="media-status-value">3.19&nbsp;TiB / 10.68&nbsp;TiB</div>
+            <div class="media-status-sub">Free: 7.49&nbsp;TiB · 4 disks · ZFS</div>
+          </div>
+
+          <div class="media-status-item">
+            <div class="media-status-label">Big HDDs Pool</div>
+            <div class="media-status-value">0% used</div>
+            <div class="media-status-sub">Free: 23.49&nbsp;TiB · 1 disk · ONLINE</div>
+          </div>
+
+          <div class="media-status-item">
+            <div class="media-status-label">System &amp; Network</div>
+            <div class="media-status-value">2&nbsp;days uptime</div>
+            <div class="media-status-sub">
+              AMD Ryzen 5&nbsp;2600 · 15.5&nbsp;GiB RAM · 192.168.1.37
+            </div>
+          </div>
+
+          <div class="media-status-item">
+            <div class="media-status-label">Media Stack</div>
+            <div class="media-status-tags">
+              <span>Plex</span>
+              <span>Jellyfin</span>
+              <span>qBittorrent</span>
+              <span>Sonarr</span>
+              <span>Radarr</span>
+              <span>Lidarr</span>
+              <span>Readarr</span>
+              <span>Prowlarr</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-status-footer">
+          <div class="media-status-note">
+            DorinaServer is my home lab media server. It runs TrueNAS SCALE with a dedicated
+            media pool, Plex/Jellyfin for streaming, and a full Servarr stack for download
+            automation and library organization. The current degraded state is monitored and
+            tolerated without data loss while I plan a drive replacement.
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact -->
     <section id="contact" class="contact">
-      <div class="contact-kicker">05. What’s Next?</div>
+      <div class="contact-kicker">06. What’s Next?</div>
       <h2 class="contact-title">Get In Touch</h2>
       <p class="contact-body">
         I’m always open to new opportunities, collaborations, or just talking about interesting
