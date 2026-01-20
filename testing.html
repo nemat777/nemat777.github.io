@@ -155,8 +155,8 @@
     /* Hero */
 
     .hero {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
+      padding-top: 2rem;
+      padding-bottom: 3rem;
     }
 
     .hero-subtitle {
@@ -348,11 +348,12 @@
       font-size: 0.8rem;
     }
 
-    /* Featured projects */
+    /* Projects */
 
     .projects-grid {
       display: grid;
       gap: 2.5rem;
+      margin-bottom: 3rem;
     }
 
     .project-card {
@@ -425,7 +426,7 @@
       justify-content: stretch;
     }
 
-    /* Media server widget */
+    /* Media server widget (used in projects section) */
 
     .media-status-card {
       background-color: var(--bg-alt);
@@ -533,7 +534,7 @@
       line-height: 1.4;
     }
 
-    /* Archive */
+    /* Archive (within Projects section) */
 
     .archive-intro {
       color: var(--muted);
@@ -705,7 +706,7 @@
       );
       mix-blend-mode: screen;
       opacity: 0;
-      transition: opacity 0.25s.ease-out;
+      transition: opacity 0.25s ease-out;
       z-index: 0;
       filter: blur(10px);
     }
@@ -732,33 +733,29 @@
           I build thoughtful web interfaces and keep the systems behind them happy.
         </div>
         <nav class="sidebar-nav">
-          <a href="#top"><span>00.</span>Intro</a>
           <a href="#about"><span>01.</span>About</a>
           <a href="#experience"><span>02.</span>Experience</a>
-          <a href="#work"><span>03.</span>Work</a>
-          <a href="#archive"><span>04.</span>Archive</a>
-          <a href="#media-server"><span>05.</span>Media Server</a>
-          <a href="#contact"><span>06.</span>Contact</a>
+          <a href="#projects"><span>03.</span>Projects</a>
+          <a href="#contact"><span>04.</span>Contact</a>
         </nav>
       </aside>
 
       <!-- Right scrollable content -->
       <div class="app-content">
-        <!-- Hero -->
-        <section class="hero" id="top">
-          <div class="hero-subtitle">Hi, my name is</div>
-          <h1 class="hero-title">Kian Nematollahi.</h1>
-          <h2 class="hero-tagline">I build things for the web.</h2>
-          <p class="hero-body">
-            I’m a software developer who enjoys designing and building clean, thoughtful interfaces and
-            systems. Right now I’m focused on shipping reliable, human‑friendly products and learning
-            as much as I can along the way.
-          </p>
-          <a class="hero-cta" href="#work">View my work</a>
-        </section>
-
-        <!-- About -->
+        <!-- ABOUT: hero + about -->
         <section id="about">
+          <div class="hero">
+            <div class="hero-subtitle">Hi, my name is</div>
+            <h1 class="hero-title">Kian Nematollahi.</h1>
+            <h2 class="hero-tagline">I build things for the web.</h2>
+            <p class="hero-body">
+              I’m a software developer who enjoys designing and building clean, thoughtful interfaces and
+              systems. Right now I’m focused on shipping reliable, human‑friendly products and learning
+              as much as I can along the way.
+            </p>
+            <a class="hero-cta" href="#projects">View my work</a>
+          </div>
+
           <h2 class="section-title"><span>01.</span>About Me</h2>
           <div class="about-grid">
             <div class="about-text">
@@ -791,9 +788,9 @@
           </div>
         </section>
 
-        <!-- Experience -->
+        <!-- EXPERIENCE -->
         <section id="experience">
-          <h2 class="section-title"><span>02.</span>Where I’ve Worked</h2>
+          <h2 class="section-title"><span>02.</span>Experience</h2>
           <div class="experience-layout">
             <div class="experience-tabs">
               <div class="experience-tab active">Company One</div>
@@ -823,9 +820,10 @@
           </div>
         </section>
 
-        <!-- Featured work -->
-        <section id="work">
-          <h2 class="section-title"><span>03.</span>Some Things I’ve Built</h2>
+        <!-- PROJECTS: featured + archive + media server -->
+        <section id="projects">
+          <h2 class="section-title"><span>03.</span>Projects</h2>
+
           <div class="projects-grid">
             <!-- DorinaServer -->
             <article class="project-card">
@@ -933,7 +931,4 @@
                 </div>
               </div>
               <div class="project-thumb">
-                <div class="project-thumb-inner">screenshot / mockup</div>
-              </div>
-            </article>
-          
+                <div class="project-thumb-inner">screenshot
