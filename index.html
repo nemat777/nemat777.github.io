@@ -1,7 +1,7 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
+head>
   <meta charset="UTF-8" />
   <title>Kian Nematollahi | Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,6 +48,8 @@
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 2rem 1.5rem 4rem;
+      position: relative; /* ensure stacking creates a context */
+      z-index: 1;
     }
 
     header {
@@ -627,9 +629,34 @@
         font-size: 2.2rem;
       }
     }
+
+    /* Cursor light effect */
+
+    .cursor-light {
+      position: fixed;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(100, 255, 218, 0.35), rgba(100, 255, 218, 0));
+      mix-blend-mode: screen;
+      z-index: 0; /* sits behind main content but above bg */
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cursor-light {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- cursor light -->
+  <div class="cursor-light" aria-hidden="true"></div>
+
   <main>
     <header>
       <div class="logo">KN</div>
@@ -897,15 +924,4 @@
     <!-- Contact -->
     <section id="contact" class="contact">
       <div class="contact-kicker">05. What’s Next?</div>
-      <h2 class="contact-title">Get In Touch</h2>
-      <p class="contact-body">
-        I’m always open to new opportunities, collaborations, or just talking about interesting
-        problems. Whether you have a question or just want to say hi, my inbox is open.
-      </p>
-      <a class="contact-cta" href="mailto:you@example.com">Say hello</a>
-    </section>
-
-    <footer>
-      <div>Built by Kian Nematollahi</div>
-    </footer>
- 
+      <h2 class="contact-title">Get In Touch
