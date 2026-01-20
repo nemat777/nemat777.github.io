@@ -426,7 +426,7 @@
       justify-content: stretch;
     }
 
-    /* Media server widget (used in projects section) */
+    /* Media server widget */
 
     .media-status-card {
       background-color: var(--bg-alt);
@@ -820,7 +820,7 @@
           </div>
         </section>
 
-        <!-- PROJECTS: featured + archive + media server -->
+        <!-- PROJECTS -->
         <section id="projects">
           <h2 class="section-title"><span>03.</span>Projects</h2>
 
@@ -931,4 +931,135 @@
                 </div>
               </div>
               <div class="project-thumb">
-                <div class="project-thumb-inner">screenshot
+                <div class="project-thumb-inner">screenshot</div>
+              </div>
+            </article>
+          </div>
+          
+          <!-- Archive inside Projects -->
+          <div>
+            <p class="archive-intro">
+              A non‑exhaustive list of things I’ve worked on over the years.
+            </p>
+            <table class="archive-table">
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Project</th>
+                  <th>Made at</th>
+                  <th>Built with</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2025</td>
+                  <td class="archive-title">
+                    Project Alpha <span>Product</span>
+                  </td>
+                  <td>Company One</td>
+                  <td>Next.js · TypeScript · PostgreSQL</td>
+                  <td><a href="#">Site</a></td>
+                </tr>
+                <tr>
+                  <td>2024</td>
+                  <td class="archive-title">
+                    Design System <span>System</span>
+                  </td>
+                  <td>Company Two</td>
+                  <td>React · Storybook · CSS</td>
+                  <td><a href="#">Case study</a></td>
+                </tr>
+                <tr>
+                  <td>2023</td>
+                  <td class="archive-title">
+                    Open Source Tool <span>OSS</span>
+                  </td>
+                  <td>Personal</td>
+                  <td>Node.js · CLI · npm</td>
+                  <td><a href="#">GitHub</a></td>
+                </tr>
+                <tr>
+                  <td>2022</td>
+                  <td class="archive-title">
+                    Portfolio v2 <span>Personal</span>
+                  </td>
+                  <td>Personal</td>
+                  <td>Next.js · CSS</td>
+                  <td><a href="#">Site</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+          <h2 class="section-title"><span>04.</span>Contact</h2>
+          <div class="contact">
+            <div class="contact-kicker">What’s Next?</div>
+            <h3 class="contact-title">Get In Touch</h3>
+            <p class="contact-body">
+              I’m always open to new opportunities, collaborations, or just talking through interesting
+              problems. Whether you have a specific role in mind or just want to say hi, my inbox is open.
+            </p>
+            <a class="contact-cta" href="mailto:you@example.com">Say hello</a>
+          </div>
+        </section>
+
+        <footer>
+          <div>Built by Kian Nematollahi</div>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const light = document.querySelector('.cursor-light');
+      if (!light) return;
+
+      let targetX = window.innerWidth / 2;
+      let targetY = window.innerHeight / 2;
+      let currentX = targetX;
+      let currentY = targetY;
+      const ease = 0.18;
+      let hasMoved = false;
+
+      function onMouseMove(e) {
+        targetX = e.clientX;
+        targetY = e.clientY;
+
+        if (!hasMoved) {
+          hasMoved = true;
+          light.style.opacity = '1';
+        }
+      }
+
+      window.addEventListener('mousemove', onMouseMove);
+
+      function animate() {
+        currentX += (targetX - currentX) * ease;
+        currentY += (targetY - currentY) * ease;
+
+        light.style.left = currentX + 'px';
+        light.style.top = currentY + 'px';
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+
+      window.addEventListener('mouseleave', () => {
+        light.style.opacity = '0';
+        hasMoved = false;
+      });
+
+      window.addEventListener('mouseenter', () => {
+        // will fade in on first mousemove
+      });
+    })();
+  </script>
+</body>
+</html>
+
