@@ -688,6 +688,67 @@
         font-size: 2.2rem;
       }
     }
+    /* KN preloader */
+
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background-color: #020617; /* very dark background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    /* When JS adds this class, the overlay fades out */
+    #preloader.preloader-done {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .preloader-logo {
+      width: 160px;
+      height: 64px;
+    }
+
+    .preloader-stroke {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 240;
+      stroke-dashoffset: 240;
+      /* 1) draw line
+         2) hold
+         3) fade out */
+      animation:
+        preloader-draw 1.4s ease-out forwards,
+        preloader-hold 0.6s linear 1.4s forwards,
+        preloader-fade 0.5s ease-out 2.0s forwards;
+    }
+
+    @keyframes preloader-draw {
+      from {
+        stroke-dashoffset: 240;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes preloader-hold {
+      from { opacity: 1; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes preloader-fade {
+      from { opacity: 1; }
+      to   { opacity: 0; }
+    }
 
     /* Cursor light */
 
@@ -719,6 +780,33 @@
   </style>
 </head>
 <body>
+  <body>
+  <div class="cursor-light" aria-hidden="true"></div>
+
+  <!-- KN preloader -->
+  <div id="preloader">
+    <svg
+      class="preloader-logo"
+      viewBox="0 0 200 80"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <!-- K -->
+      <path
+        class="preloader-stroke"
+        d="M30 10 L30 70 M30 40 L60 10 M30 40 L60 70"
+      />
+      <!-- N -->
+      <path
+        class="preloader-stroke"
+        d="M90 70 L90 10 L140 70 L140 10"
+      />
+    </svg>
+  </div>
+
+  <main>
+    <div class="app-shell">
+
   <div class="cursor-light" aria-hidden="true"></div>
 
   <main>
@@ -1014,6 +1102,19 @@
     </div>
   </main>
 
+   <script>
+    // KN preloader: wait for page load, then hide after animation finishes
+    window.addEventListener('load', function () {
+      const preloader = document.getElementById('preloader');
+      if (!preloader) return;
+
+      // animation total ~2.5s; wait a bit longer to be safe
+      setTimeout(function () {
+        preloader.classList.add('preloader-done');
+      }, 2600);
+    });
+  </script>
+
   <script>
     (function () {
       const light = document.querySelector('.cursor-light');
@@ -1060,6 +1161,9 @@
       });
     })();
   </script>
+</body>
+</html>
+
 </body>
 </html>
 
