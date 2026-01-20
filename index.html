@@ -1,7 +1,7 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-head>
+<head>
   <meta charset="UTF-8" />
   <title>Kian Nematollahi | Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,7 +48,7 @@ head>
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 2rem 1.5rem 4rem;
-      position: relative; /* ensure stacking creates a context */
+      position: relative;
       z-index: 1;
     }
 
@@ -641,7 +641,7 @@ head>
       transform: translate(-50%, -50%);
       background: radial-gradient(circle, rgba(100, 255, 218, 0.35), rgba(100, 255, 218, 0));
       mix-blend-mode: screen;
-      z-index: 0; /* sits behind main content but above bg */
+      z-index: 0; /* behind main but above bg */
       opacity: 0;
       transition: opacity 0.2s ease-out;
     }
@@ -654,7 +654,7 @@ head>
   </style>
 </head>
 <body>
-  <!-- cursor light -->
+  <!-- Cursor light layer -->
   <div class="cursor-light" aria-hidden="true"></div>
 
   <main>
@@ -910,18 +910,4 @@ head>
           </tr>
           <tr>
             <td>2022</td>
-            <td class="archive-title">
-              Portfolio v2 <span>Personal</span>
-            </td>
-            <td>Personal</td>
-            <td>Next.js · CSS</td>
-            <td><a href="#">Site</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="contact">
-      <div class="contact-kicker">05. What’s Next?</div>
-      <h2 class="contact-title">Get In Touch
+            
