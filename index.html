@@ -316,6 +316,7 @@
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       gap: 1.5rem;
+      align-items: center;
     }
 
     .project-meta {
@@ -366,57 +367,21 @@
       position: relative;
       overflow: hidden;
       min-height: 220px;
-    }
 
-    .project-thumb-inner {
-      position: absolute;
-      inset: 0;
+      /* center the widget and give it some breathing room */
       display: flex;
-      align-items: stretch;
-      justify-content: stretch;
+      align-items: center;
+      justify-content: center;
       padding: 1rem;
     }
 
-    /* Archive */
-
-    .archive-intro {
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
-    }
-
-    .archive-table {
+    .project-thumb-inner {
+      position: relative;
       width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-
-    .archive-table th,
-    .archive-table td {
-      padding: 0.6rem 0.5rem;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-    }
-
-    .archive-table th {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .archive-table tr:hover td {
-      background-color: rgba(100, 255, 218, 0.02);
-    }
-
-    .archive-title {
-      color: var(--text);
-    }
-
-    .archive-title span {
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      margin-left: 0.35rem;
+      max-width: 420px; /* tweak 360–460px to taste */
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
     }
 
     /* Media server widget (used in Featured Project #1) */
@@ -425,9 +390,9 @@
       background-color: var(--bg-alt);
       border-radius: 6px;
       border: 1px solid var(--border);
-      padding: 1.2rem;
+      padding: 1rem;         /* slightly tighter than before */
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.8rem;     /* slightly smaller text */
       width: 100%;
     }
 
@@ -466,8 +431,8 @@
     .media-status-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem 1.2rem;
-      margin-bottom: 1rem;
+      gap: 0.75rem 1rem;   /* tighter */
+      margin-bottom: 0.75rem;
     }
 
     .media-status-item {
@@ -518,7 +483,49 @@
     }
 
     .media-status-note {
-      line-height: 1.5;
+      line-height: 1.4;
+    }
+
+    /* Archive */
+
+    .archive-intro {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .archive-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .archive-table th,
+    .archive-table td {
+      padding: 0.6rem 0.5rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .archive-table th {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .archive-table tr:hover td {
+      background-color: rgba(100, 255, 218, 0.02);
+    }
+
+    .archive-title {
+      color: var(--text);
+    }
+
+    .archive-title span {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      margin-left: 0.35rem;
     }
 
     /* Contact */
