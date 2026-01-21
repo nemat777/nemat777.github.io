@@ -6,19 +6,20 @@
   <title>Kian Nematollahi | Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    :root {
-      --bg: #0a192f;
-      --bg-alt: #112240;
-      --accent: #64ffda;
-      --text: #ccd6f6;
-      --muted: #8892b0;
-      --border: #233554;
-      --mono: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-        "Open Sans", "Helvetica Neue", sans-serif;
-      --transition-fast: 0.2s ease;
-      --max-width: 1000px;
-    }
+:root {
+  --bg: #02040a;        /* main background: near‑black */
+  --bg-alt: #050810;    /* slightly lighter for cards/sections */
+  --accent: #f5f5f5;    /* white-ish accent */
+  --text: #f9fafb;      /* primary text: white */
+  --muted: #9ca3af;     /* muted grey text */
+  --border: #1f2933;    /* subtle dark border */
+
+  --mono: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
+  --transition-fast: 0.2s ease;
+  --max-width: 1000px;
+}
 
     * {
       box-sizing: border-box;
@@ -469,17 +470,13 @@
       white-space: nowrap;
     }
 
-    .media-status-chip--degraded {
-      border-color: #f59e0b;
-      color: #fbbf24;
-      background-color: rgba(245, 158, 11, 0.08);
-    }
+.media-status-chip--degraded,
+.media-status-chip--healthy {
+  border-color: #4b5563;
+  color: #e5e7eb;
+  background-color: rgba(15, 23, 42, 0.8);
+}
 
-    .media-status-chip--healthy {
-      border-color: #22c55e;
-      color: #4ade80;
-      background-color: rgba(34, 197, 94, 0.08);
-    }
 
     .media-status-grid {
       display: grid;
@@ -764,12 +761,12 @@
       border-radius: 50%;
       pointer-events: none;
       transform: translate(-50%, -50%);
-      background: radial-gradient(
-        circle,
-        rgba(100, 255, 218, 0.06) 0%,
-        rgba(100, 255, 218, 0.03) 30%,
-        rgba(100, 255, 218, 0.0) 70%
-      );
+       background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 30%,
+    rgba(255, 255, 255, 0.0) 70%
+  );
       mix-blend-mode: screen;
       opacity: 0;
       transition: opacity 0.25s ease-out;
