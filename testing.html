@@ -312,8 +312,17 @@
       background-color: var(--accent);
     }
 
+       .experience-panels {
+      position: relative;
+    }
+
     .experience-panel {
       color: var(--muted);
+      display: none;          /* hide by default */
+    }
+
+    .experience-panel.active {
+      display: block;         /* only the active one is visible */
     }
 
     .experience-role {
@@ -1260,6 +1269,35 @@ c3 -285 1 -337 -11 -327 -7 6 -99 57 -205 112 l-191 101 -2 1035 c-2 858 0
         preloader.classList.add('preloader-done');
       }, 2600);
     });
+  </script>
+  <script>
+    // Experience tabs: switch panels when clicking sidebar items
+    (function () {
+      const tabs = document.querySelectorAll('.experience-tab');
+      const panels = document.querySelectorAll('.experience-panel');
+
+      if (!tabs.length || !panels.length) return;
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const targetId = tab.getAttribute('data-target');
+          if (!targetId) return;
+
+          // update tab active state
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+
+          // update panel active state
+          panels.forEach(panel => {
+            if (panel.id === targetId) {
+              panel.classList.add('active');
+            } else {
+              panel.classList.remove('active');
+            }
+          });
+        });
+      });
+    })();
   </script>
 
   <script>
