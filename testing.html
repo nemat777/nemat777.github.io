@@ -963,31 +963,94 @@ c3 -285 1 -337 -11 -327 -7 6 -99 57 -205 112 l-191 101 -2 1035 c-2 858 0
         </section>
 
         <!-- EXPERIENCE -->
+               <!-- EXPERIENCE -->
         <section id="experience">
           <h2 class="section-title"><span>02.</span>Experience</h2>
           <div class="experience-layout">
             <div class="experience-tabs">
-              <div class="experience-tab active">Reserve Dermatology and Aesthetics</div>
-              <div class="experience-tab">Family Smiles at the Glen</div>
-              <div class="experience-tab">Freelance</div>
+              <div class="experience-tab active" data-target="experience-reserve">
+                Reserve Dermatology and Aesthetics
+              </div>
+              <div class="experience-tab" data-target="experience-family">
+                Family Smiles at the Glen
+              </div>
+              <div class="experience-tab" data-target="experience-freelance">
+                Freelance / Personal Projects
+              </div>
             </div>
-            <div class="experience-panel">
-              <h3 class="experience-role">
-                Senior Software Engineer <span>@ Company One</span>
-              </h3>
-              <div class="experience-meta">August 2024 – Present · On-Site</div>
-              <ul class="experience-points">
-                <li>
-                  Built and maintain small tools in Java and Python to automate personal workflows, including scripts for data cleanup, file organization, and basic monitoring tasks.
-                </li>
-                <li>
-                  Use spreadsheets and Excel formulas to track clinic metrics, cosmetic quotes, and clinic inventory, treating Excel as a lightweight data and reporting tool.
-                </li>
-                <li>
-                  Collaborated closely with designers, product managers, and other staff members to ship
-                  features on a regular cadence.
-                </li>
-              </ul>
+
+            <!-- Panels -->
+            <div class="experience-panels">
+              <!-- Reserve Dermatology (shown by default) -->
+              <div class="experience-panel active" id="experience-reserve">
+                <h3 class="experience-role">
+                  Software & Operations Support <span>@ Reserve Dermatology and Aesthetics</span>
+                </h3>
+                <div class="experience-meta">Aug 2024 – Present · On-site</div>
+                <ul class="experience-points">
+                  <li>
+                    Use Excel and spreadsheets to track clinic metrics, cosmetic quotes, and inventory,
+                    treating them as lightweight data and reporting tools.
+                  </li>
+                  <li>
+                    Build small utilities in Java and Python to automate repetitive tasks such as data
+                    cleanup, file organization, and export/import workflows.
+                  </li>
+                  <li>
+                    Support day-to-day operations by troubleshooting basic technical issues and helping
+                    staff use the tools and systems more effectively.
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Family Smiles -->
+              <div class="experience-panel" id="experience-family">
+                <h3 class="experience-role">
+                  Operations Assistant <span>@ Family Smiles at the Glen</span>
+                </h3>
+                <div class="experience-meta">Dates · On-site</div>
+                <ul class="experience-points">
+                  <li>
+                    Helped manage patient-facing workflows and documentation, ensuring information was
+                    recorded, stored, and retrieved reliably.
+                  </li>
+                  <li>
+                    Used spreadsheets and simple scripts to keep track of schedules, reminders, and
+                    operational data for the practice.
+                  </li>
+                  <li>
+                    Worked with staff to identify small process improvements that reduced manual steps
+                    and made daily tasks smoother.
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Freelance / Personal -->
+              <div class="experience-panel" id="experience-freelance">
+                <h3 class="experience-role">
+                  Home Lab & Software Projects <span>@ Personal</span>
+                </h3>
+                <div class="experience-meta">2022 – Present · Remote / Home Lab</div>
+                <ul class="experience-points">
+                  <li>
+                    Designed and maintain a home lab with dedicated media, document, and home automation
+                    servers, treating it as a sandbox for learning systems, networking, and automation.
+                  </li>
+                  <li>
+                    Run a self-hosted media server stack (TrueNAS SCALE, ZFS, Plex/Jellyfin, Servarr
+                    tools, qBittorrent) and monitor disk health, storage pools, and uptime.
+                  </li>
+                  <li>
+                    Built a home automation server that integrates with major voice assistants and is
+                    currently developing a self-hosted LLM assistant (a “Jarvis” for the home) to tie
+                    media, documents, and automation together via natural-language commands.
+                  </li>
+                  <li>
+                    Develop small tools and scripts in Java, Python, HTML, CSS, and Excel to support
+                    personal workflows and experiments.
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
