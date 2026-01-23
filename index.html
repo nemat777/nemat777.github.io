@@ -116,6 +116,25 @@
     .sidebar-nav a:hover {
       color: var(--accent);
     }
+.sidebar-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-social a {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  opacity: 0.9;
+}
+
+.sidebar-social a:hover {
+  color: var(--accent);
+  opacity: 1;
+}
 
     /* Right content */
 
@@ -1471,9 +1490,6 @@ c3 -285 1 -337 -11 -327 -7 6 -99 57 -205 112 l-191 101 -2 1035 c-2 858 0
     document.addEventListener("DOMContentLoaded", updateDorinaUptime);
   })();
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
