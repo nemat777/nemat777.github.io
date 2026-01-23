@@ -1157,34 +1157,95 @@ c3 -285 1 -337 -11 -327 -7 6 -99 57 -205 112 l-191 101 -2 1035 c-2 858 0
             </article>
 
             <!-- Project Two placeholder -->
-            <article class="project-card">
-              <div class="project-meta">
-                <div class="project-label">Featured Project</div>
-                <h3 class="project-title">Home Automation Server · Self‑Hosted “Jarvis”</h3>
-                <div class="project-description">
-                My home automation server is a self‑hosted control hub that unifies lights, devices, media, 
-                and documents. It brings together a home automation platform, integrations with major voice 
-                assistants, and a local LLM “Jarvis” that lets me trigger routines and media with natural‑language 
-                commands. This widget surfaces automations, integrations, and system status in a compact, 
-                portfolio‑friendly layout. Beyond running my home, this project is my sandbox for learning
-                event‑driven systems, observability, and failure handling — the same skills that show up when 
-                debugging flaky workflows or supporting production environments.
-                </div>
-                <div class="project-tags">
-                  <span>Home Automation</span>
-                  <span>Self‑Hosted LLM</span>
-                  <span>Python / Java Scripts</span>
-                  <span>Docker</span>
-                  <span>Home Lab</span>
-                </div>
-                <div class="project-links">
-                  <a href="#">Case study</a>
-                </div>
-              </div>
-              <div class="project-thumb">
-                <div class="project-thumb-inner">screenshot</div>
-              </div>
-            </article>
+           <article class="project-card">
+  <div class="project-meta">
+    <div class="project-label">Featured Project</div>
+    <h3 class="project-title">Home Automation Server · Self‑Hosted “Jarvis”</h3>
+    <div class="project-description">
+      My home automation server is a self‑hosted control hub that unifies lights, devices, media, 
+      and documents. It brings together a home automation platform, integrations with major voice 
+      assistants, and a local LLM “Jarvis” that lets me trigger routines and media with natural‑language 
+      commands. This widget surfaces automations, integrations, and system status in a compact, 
+      portfolio‑friendly layout. Beyond running my home, this project is my sandbox for learning
+      event‑driven systems, observability, and failure handling — the same skills that show up when 
+      debugging flaky workflows or supporting production environments.
+    </div>
+    <div class="project-tags">
+      <span>Home Automation</span>
+      <span>Self‑Hosted LLM</span>
+      <span>Python / Java Scripts</span>
+      <span>Docker</span>
+      <span>Home Lab</span>
+    </div>
+    <div class="project-links">
+      <a href="#">Case study</a>
+    </div>
+  </div>
+  <div class="project-thumb">
+    <div class="project-thumb-inner">
+      <div class="media-status-card">
+        <div class="media-status-header">
+          <div class="media-status-title">
+            Home Automation Server · Self‑Hosted “Jarvis” v1.0
+          </div>
+          <div class="media-status-chip media-status-chip--healthy">
+            Automations · STABLE · 4 rooms covered
+          </div>
+        </div>
+
+        <div class="media-status-grid">
+          <div class="media-status-item">
+            <div class="media-status-label">Routines &amp; Coverage</div>
+            <div class="media-status-value">
+              Movie Night · Good Morning · Leaving Home · Study Mode
+            </div>
+            <div class="media-status-sub">
+              <strong>12</strong> automations · <strong>4</strong> rooms · <strong>18</strong> devices
+            </div>
+          </div>
+
+          <div class="media-status-item">
+            <div class="media-status-label">System &amp; Network</div>
+            <div class="media-status-value" id="jarvis-uptime">
+              0&nbsp;days uptime
+            </div>
+            <div class="media-status-sub">
+              4‑core CPU · 8&nbsp;GiB RAM · Docker
+            </div>
+          </div>
+
+          <div class="media-status-item">
+            <div class="media-status-label">Assistants &amp; Integrations</div>
+            <div class="media-status-value">
+              2 voice assistants · Media server · Document server
+            </div>
+            <div class="media-status-sub">
+              Local LLM “Jarvis” for natural‑language control
+            </div>
+          </div>
+
+          <div class="media-status-item">
+            <div class="media-status-label">Stack</div>
+            <div class="media-status-tags">
+              <span>Home Automation</span>
+              <span>Self‑Hosted LLM</span>
+              <span>Python / Java</span>
+              <span>Docker</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-status-footer">
+          <div class="media-status-note">
+            This static snapshot mirrors my real home automation setup: a self‑hosted control
+            hub that unifies lights, devices, media, and documents, and layers a local
+            LLM “Jarvis” on top for natural‑language automations.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
           </div>
           
           <!-- Archive inside Projects -->
@@ -1353,5 +1414,32 @@ c3 -285 1 -337 -11 -327 -7 6 -99 57 -205 112 l-191 101 -2 1035 c-2 858 0
       });
     })();
   </script>
+    <script>
+    (function () {
+      // Set this to the real date/time your Jarvis server went "live".
+      // Format: YYYY-MM-DDTHH:MM:SS
+      var jarvisStartDate = new Date("2024-10-01T00:00:00");
+
+      function updateJarvisUptime() {
+        var el = document.getElementById("jarvis-uptime");
+        if (!el) return;
+
+        var now = new Date();
+        var diffMs = now.getTime() - jarvisStartDate.getTime();
+        var days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+        if (Number.isNaN(days) || days < 0) {
+          days = 0;
+        }
+
+        el.innerHTML = days + "&nbsp;days uptime";
+      }
+
+      document.addEventListener("DOMContentLoaded", updateJarvisUptime);
+    })();
+  </script>
+</body>
+</html>
+
 </body>
 </html>
