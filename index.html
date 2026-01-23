@@ -1113,13 +1113,16 @@ c3 -285 1 -337 -11 -327 -7 6 -99 57 -205 112 l-191 101 -2 1035 c-2 858 0
                         <div class="media-status-sub">Free: 7.49&nbsp;TiB · 4 disks · ZFS</div>
                       </div>
 
-                      <div class="media-status-item">
-                        <div class="media-status-label">System &amp; Network</div>
-                        <div class="media-status-value">913&nbsp;days uptime</div>
-                        <div class="media-status-sub">
-                          AMD Ryzen 5&nbsp;2600 · 15.5&nbsp;GiB RAM
-                        </div>
-                      </div>
+<div class="media-status-item">
+  <div class="media-status-label">System &amp; Network</div>
+  <div class="media-status-value">
+    <span id="dorina-uptime">913&nbsp;days uptime</span>
+  </div>
+  <div class="media-status-sub">
+    AMD Ryzen 5&nbsp;2600 · 15.5&nbsp;GiB RAM
+  </div>
+</div>
+
 
                       <div class="media-status-item">
                         <div class="media-status-label">Library</div>
@@ -1438,6 +1441,31 @@ c3 -285 1 -337 -11 -327 -7 6 -99 57 -205 112 l-191 101 -2 1035 c-2 858 0
       document.addEventListener("DOMContentLoaded", updateJarvisUptime);
     })();
   </script>
+  <script>
+  (function () {
+    // Set this to when DorinaServer actually went live
+    // Format: YYYY-MM-DDTHH:MM:SS
+    var dorinaStartDate = new Date("2022-06-01T00:00:00");
+
+    function updateDorinaUptime() {
+      var el = document.getElementById("dorina-uptime");
+      if (!el) return;
+
+      var now = new Date();
+      var diffMs = now.getTime() - dorinaStartDate.getTime();
+      var days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+      if (Number.isNaN(days) || days < 0) {
+        days = 0;
+      }
+
+      el.innerHTML = days + "&nbsp;days uptime";
+    }
+
+    document.addEventListener("DOMContentLoaded", updateDorinaUptime);
+  })();
+</script>
+
 </body>
 </html>
 
